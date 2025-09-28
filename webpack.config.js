@@ -2,6 +2,7 @@ const path = require("path");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const Dotenv = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   mode: "production",

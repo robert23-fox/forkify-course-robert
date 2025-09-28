@@ -1,6 +1,7 @@
 const path = require("path");
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer");
 const Dotenv = require("dotenv-webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   mode: "production",
@@ -11,13 +12,14 @@ module.exports = {
     assetModuleFilename: "images/[name][ext]", // Ensures images are placed correctly
   },
   plugins: [
-    // Load env vars from Netlify or local .env/config.env
     new Dotenv({
-      path: "./config.env", // only used locally
-      systemvars: true, // allows Netlify env vars to be used
+      path: "./config.env",
+      systemvars: true,
     }),
-
-    // Only enable Bundle Analyzer in dev
+    new HtmlWebpackPlugin({
+      template: "./src/index.html", // <- your source HTML
+      filename: "index.html", // <- ensures index.html is in dist/
+    }),
     process.env.NODE_ENV === "development" && new BundleAnalyzerPlugin(),
   ].filter(Boolean),
   devServer: {

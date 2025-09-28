@@ -11,12 +11,15 @@ module.exports = {
     assetModuleFilename: "images/[name][ext]", // Ensures images are placed correctly
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
+    // Load env vars from Netlify or local .env/config.env
     new Dotenv({
-      path: "./config.env",
-      safe: false,
+      path: "./config.env", // only used locally
+      systemvars: true, // allows Netlify env vars to be used
     }),
-  ],
+
+    // Only enable Bundle Analyzer in dev
+    process.env.NODE_ENV === "development" && new BundleAnalyzerPlugin(),
+  ].filter(Boolean),
   devServer: {
     static: {
       directory: path.resolve(__dirname, "dist"),

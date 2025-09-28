@@ -41,7 +41,6 @@ export const AJAX = async function (
 };
 
 /*
-
 export const getJSON = async function (url) {
   try {
     const res = await Promise.race([fetch(url), timeout(TIMEOUT_SEC)]);

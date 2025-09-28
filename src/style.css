@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hamburger menu */
+.nav__btn {
+  @apply flex flex-row items-center justify-center space-x-2 uppercase text-gray-800 font-semibold text-sm px-2 hover:bg-gray-200 hover:bg-opacity-50;
+}
+
+.pagination__btn {
+  @apply px-4 py-2 rounded-full bg-gradient-to-tl from-orange-400 to-orange-200 transform transition duration-300 ease-in-out hover:opacity-90 active:opacity-40;
+}

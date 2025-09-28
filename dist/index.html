@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alata&family=Bai+Jamjuree:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600;1,700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Jost:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Rokkitt:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon" />
+    <title>Forkify</title>
+    <script defer src="bundle.js"></script>
+  </head>
+  <body>
+    <div
+      id="bg-container"
+      class="relative bg-gradient-to-tl from-orange-400 to-orange-200 w-full min-h-screen flex justify-center items-center py-10"
+    >
+      <main
+        id="main"
+        class="w-3/4 h-full bg-white rounded-xl shadow-xl flex flex-col"
+      >
+        <!-- Header -->
+        <header
+          class="header flex flex-row justify-between bg-gray-100 rounded-t-xl items-center px-5 h-24"
+        >
+          <img
+            src="./images/logo.png"
+            alt="img logo"
+            class="header__logo w-32"
+          />
+          <form class="search flex flex-row -space-x-10">
+            <input
+              type="text"
+              placeholder="Search over 1,000,000 recipes..."
+              class="search__field p-3 rounded-full pl-6 pr-20 place-content-start border-none focus:outline-none focus:ring-0"
+            />
+            <button
+              class="btn search__btn flex flex-row items-center jusitfy-center space-x-3 uppercase text-orange-50 font-semibold bg-gradient-to-tl from-orange-400 to-orange-200 px-8 py-3 rounded-full hover:scale-105"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-search"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+                />
+              </svg>
+              <span>Search</span>
+            </button>
+          </form>
+          <nav class="nav">
+            <ul
+              class="nav__list flex flex-row justify-center items-center space-x-6"
+            >
+              <li class="nav__item">
+                <button class="nav__btn nav__btn--add-recipe py-8">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="28"
+                    height="28"
+                    fill="currentColor"
+                    class="bi bi-pencil-square text-orange-400"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"
+                    />
+                    <path
+                      fill-rule="evenodd"
+                      d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"
+                    />
+                  </svg>
+                  <span class="text-sm">Add Recipe</span>
+                </button>
+              </li>
+              <li class="nav__item relative">
+                <button class="nav__btn nav__btn--bookmarks py-8">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    class="bi bi-bookmark text-orange-400"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1z"
+                    />
+                  </svg>
+                  <span>Bookmarks</span>
+                </button>
+                <aside
+                  class="bookmarks absolute top-full -right-5 mt-1 w-80 bg-gray-50 opacity-0 scale-95 transition-all duration-300 ease-in-out z-50"
+                >
+                  <ul class="bookmarks__list">
+                    <div
+                      class="message flex flex-row items-center space-x-5 py-14 px-10"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="50"
+                        height="50"
+                        fill="currentColor"
+                        class="bi bi-emoji-smile"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+                        />
+                        <path
+                          d="M4.285 9.567a.5.5 0 0 1 .683.183A3.5 3.5 0 0 0 8 11.5a3.5 3.5 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5"
+                        />
+                      </svg>
+                      <p>
+                        No bookmarks yet. Find a nice recipe and bookmark it :)
+                      </p>
+                    </div>
+                    <!-- <li class="preview">
+                      <a class="preview__link" href="#23456">
+                        <figure class="preview__fig">
+                          <img src="src/img/test-1.jpg" alt="Test" />
+                        </figure>
+                        <div class="preview__data">
+                          <h4 class="preview__name">
+                            Pasta with Tomato Cream ...
+                          </h4>
+                          <p class="preview__publisher">The Pioneer Woman</p>
+                        </div>
+                      </a>
+                    </li> -->
+                  </ul>
+                </aside>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <!-- end Header -->
+        <div class="w-full flex overflow-hidden rounded-b-xl h-screen">
+          <!-- Section sidebar -->
+          <section
+            class="sidebar w-1/3 flex flex-col items-start rounded-bl-xl"
+          >
+            <ul
+              class="results flex flex-col space-y-1 w-full flex-1 overflow-y-auto"
+            >
+              <!-- <li
+                class="preview p-1 w-full transform transition duration-300 ease-in-out hover:-translate-y-1 hover:bg-gray-50"
+              >
+                <a href="#124q324" class="flex flex-row space-x-4">
+                  <figure class="relative bg-green-200 w-16 h-16 rounded-full">
+                    <img
+                      src="./images/img-1.jpg"
+                      alt="recipe image"
+                      class="w-16 h-16 rounded-full"
+                    />
+                    <div
+                      class="absolute inset-0 bg-gradient-to-br from-orange-200/50 to-orange-400/50 w-16 h-16 rounded-full"
+                    ></div>
+                  </figure>
+                  <div class="flex flex-col justify-center space-y-2">
+                    <h1 class="title text-orange-400 uppercase text-sm">
+                      Double Crust Stuffed Pizza
+                    </h1>
+                    <p class="publisher text-xs uppercase">Publisher</p>
+                  </div>
+                </a>
+              </li> -->
+            </ul>
+            <div class="pagination flex justify-between w-full p-5 text-white">
+              <!-- <div>
+                <button
+                  class="btn--inline pagination__btn flex flex-row items-center justify-center hover:-translate-x-1"
+                >
+                  <span class="text-2xl pr-2">←</span>Page 1
+                </button>
+              </div>
+              <div>
+                <button
+                  class="btn--inline pagination__btn flex flex-row items-center justify-center hover:translate-x-1"
+                >
+                  Page 2<span class="text-2xl pl-2">→</span>
+                </button>
+              </div> -->
+            </div>
+            <p class="text-xs text-gray-400 p-5 shrink-0">
+              © Copyright by Jonas Schmedtmann. Use for learning or your
+              portfolio. Don't use to teach. Don't claim as your own.
+            </p>
+          </section>
+          <!-- end Section sidebar -->
+          <!-- Section Recipe -->
+          <section
+            class="recipe__container rounded-br-xl flex flex-col flex-1 items-start overflow-y-auto"
+          >
+            <!-- Error Container -->
+          </section>
+          <!-- end Section Recipe -->
+        </div>
+      </main>
+      <!-- Form New Recipe -->
+      <div
+        class="absolute hidden overlay inset-0 bg-gray-900/20 h-full w-full flex justify-center items-center"
+      >
+        <div
+          class="add-recipe-window hidden relative w-5/6 bg-white rounded-xl flex flex-col items-center justify-start shadow-2xl py-20"
+        >
+          <button
+            class="btn--close-modal absolute top-0 right-0 mt-2 mr-5 text-2xl px-3 rounded-full pb-2 hover:rounded-full hover:bg-gray-100 hover:scale-105 active:opacity-80"
+          >
+            x
+          </button>
+          <form
+            action="submit"
+            class="upload flex flex-col w-full px-10 space-y-10 items-center"
+          >
+            <div
+              class="w-full h-full flex flex-row justify-between space-x-10 text-gray-600"
+            >
+              <!-- First col -->
+              <div class="w-1/2 h-full space-y-3">
+                <h3 class="text-gray-500 text-xl uppercase font-semibold mb-8">
+                  Recipe Data
+                </h3>
+                <div class="flex flex-row justify-between items-center">
+                  <label for="title">Title</label>
+                  <input
+                    type="text"
+                    value="TEXT23"
+                    required
+                    name="title"
+                    class="border rounded-md w-80 px-2 py-1"
+                  />
+                </div>
+                <div class="flex flex-row justify-between items-center">
+                  <label for="sourceUrl">URL</label>
+                  <input
+                    type="text"
+                    value="TEXT23"
+                    required
+                    name="sourceUrl"
+                    class="border rounded-md w-80 px-2 py-1"
+                  />
+                </div>
+                <div class="flex flex-row justify-between items-center">
+                  <label for="imageUrl">Image URL</label>
+                  <input
+                    type="text"
+                    value="TEXT23"
+                    required
+                    name="imageUrl"
+                    class="border rounded-md w-80 px-2 py-1"
+                  />
+                </div>
+                <div class="flex flex-row justify-between items-center">
+                  <label for="publisher">Publisher</label>
+                  <input
+                    type="text"
+                    value="TEXT23"
+                    required
+                    name="publisher"
+                    class="border rounded-md w-80 px-2 py-1"
+                  />
+                </div>
+                <div class="flex flex-row justify-between items-center">
+                  <label for="cookingTime">Prep Time</label>
+                  <input
+                    type="number"
+                    value="23"
+                    required
+                    name="cookingTime"
+                    class="border rounded-md w-80 px-2 py-1"
+                  />
+                </div>
+                <div class="flex flex-row justify-between items-center gap-4">
+                  <label for="servings">Servings</label>
+                  <input
+                    type="number"
+                    value="4"
+                    required
+                    name="servings"
+                    class="border rounded-md w-80 px-2 py-1"
+                  />
+                </div>
+              </div>
+              <!-- Second col -->
+              <div class="w-1/2 h-full space-y-3">
+                <h3 class="text-gray-500 text-xl uppercase font-semibold mb-8">
+                  Ingredients
+                </h3>
+                <div class="flex flex-row justify-between items-center">
+                  <label for="ingredient 1">Ingredient 1</label>
+                  <input
+                    type="text"
+                    value="0.5,kg,Rice"
+                    required
+                    name="ingredient 1"
+                    class="border rounded-md w-80 px-2 py-1"
+                  />
+                </div>
+                <div class="flex flex-row justify-between items-center gap-4">
+                  <label for="Ingredient 2">Ingredient 2</label>
+                  <input
+                    type="text"
+                    value="1,,Avocado"
+                    required
+                    name="ingredient 2"
+                    class="border rounded-md w-80 px-2 py-1"
+                  />
+                </div>
+                <div class="flex flex-row justify-between items-center">
+                  <label for="ingredient 3">Ingredient 3</label>
+                  <input
+                    type="text"
+                    value=",,salt"
+                    required
+                    name="Ingredient 3"
+                    class="border rounded-md w-80 px-2 py-1"
+                  />
+                </div>
+                <div class="flex flex-row justify-between items-center">
+                  <label for="Ingredient 4">Ingredient 4</label>
+                  <input
+                    type="text"
+                    value="1,,Avocado"
+                    required
+                    name="Ingredient 4"
+                    class="border rounded-md w-80 px-2 py-1"
+                  />
+                </div>
+                <div class="flex flex-row justify-between items-center">
+                  <label for="Ingredient 5">Ingredient 5</label>
+                  <input
+                    type="text"
+                    value="1,,Avocado"
+                    required
+                    name="Ingredient 5"
+                    class="border rounded-md w-80 px-2 py-1"
+                  />
+                </div>
+                <div class="flex flex-row justify-between items-center">
+                  <label for="Ingredient 6">Ingredient 6</label>
+                  <input
+                    type="text"
+                    value="1,,Avocado"
+                    required
+                    name="Ingredient 6"
+                    class="border rounded-md w-80 px-2 py-1"
+                  />
+                </div>
+              </div>
+            </div>
+            <button
+              class="btn upload__btn flex flex-row items-center justify-center space-x-3 text-xl bg-gradient-to-br from-orange-200 to-orange-400 px-8 py-3 rounded-full text-white font-semibold uppercase hover:opacity-90 focus:opacity-75"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                fill="currentColor"
+                class="bi bi-cloud-upload"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.569 14.502 11 12.687 11H10a.5.5 0 0 1 0-1h2.688C13.979 10 15 8.988 15 7.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 2.825 10.328 1 8 1a4.53 4.53 0 0 0-2.941 1.1c-.757.652-1.153 1.438-1.153 2.055v.448l-.445.049C2.064 4.805 1 5.952 1 7.318 1 8.785 2.23 10 3.781 10H6a.5.5 0 0 1 0 1H3.781C1.708 11 0 9.366 0 7.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383"
+                />
+                <path
+                  fill-rule="evenodd"
+                  d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708z"
+                />
+              </svg>
+              <span>Upload</span>
+            </button>
+          </form>
+        </div>
+        <!-- END Form New  Recipe -->
+      </div>
+    </div>
+  </body>
+</html>

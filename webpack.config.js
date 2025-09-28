@@ -16,6 +16,11 @@ module.exports = {
       path: "./config.env",
       systemvars: true,
     }),
+    new CopyPlugin({
+      patterns: [
+        { from: "src/images", to: "images" }, // copies all images to dist/images
+      ],
+    }),
     new HtmlWebpackPlugin({
       template: "./src/index.html", // <- your source HTML
       filename: "index.html", // <- ensures index.html is in dist/
